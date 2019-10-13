@@ -11,9 +11,9 @@ int SharedVariable = 0;
 pthread_mutex_t lock;
 pthread_barrier_t barr;
 
-void threadFunc(int threadId)
+void threadFunc(void arg)
 {
-	// int threadId = atoi
+	int threadId = *((int*)arg);
 	int num, val;
 	for (num = 0; num < 20; num++)
 	{
