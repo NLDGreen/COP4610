@@ -31,7 +31,9 @@ void *threadFunc(void *arg)
 		#endif
 	}
 	val = SharedVariable;
+	#ifdef PTHREAD_SYNC
 	pthread_barrier_wait(&barr);
+	#endif
 	printf("Thread %d sees final value %d\n", threadId, val);
 }
 
