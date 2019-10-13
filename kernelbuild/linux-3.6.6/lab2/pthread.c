@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
 	// Initialize number of threads
 	pthread_t threads[numThreads];
 	int threadIds[numThreads];
-	threadsIds[numThreads - 1] = { 0 };
+	threadIds[numThreads - 1] = 0;
 
 	// Initialize mutex.
 	pthread_mutex_init(&lock, NULL);
