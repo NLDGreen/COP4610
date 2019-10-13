@@ -36,6 +36,7 @@ void *SimpleThread(void *arg)
 int main(int argc, char* argv[])
 {
 	int i, err;
+	int numThreads;
 
 	if (argc != 2)
 	{
@@ -49,9 +50,9 @@ int main(int argc, char* argv[])
 		exit(-1);
 	}
 
-	int numThreads = atoi(argv[1]);
+	numThreads = atoi(argv[1]);
 
-	// Number of threads is 4.
+	// Initialize number of threads
 	pthread_t threads[numThreads];
 	int threadIds[numThreads] = { 0 };
 
