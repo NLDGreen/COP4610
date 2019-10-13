@@ -19,7 +19,7 @@ void threadFunc(int threadId)
 	{
 		// Compilation macro
 		#ifdef PTHREAD_SYNC
-			pthread_mutex_lock(&lock);
+		pthread_mutex_lock(&lock);
 		#endif
 		// Increment shared variable
 		val = SharedVariable;
@@ -27,7 +27,7 @@ void threadFunc(int threadId)
 		SharedVariable = val + 1;
 
 		#ifdef PTHREAD_SYNC
-			pthread_mutex_unlock(&lock);
+		pthread_mutex_unlock(&lock);
 		#endif
 	}
 	val = SharedVariable;
@@ -35,13 +35,13 @@ void threadFunc(int threadId)
 	printf("Thread %d sees final value %d\n", threadId, val);
 }
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
 	int i, err;
 
 	// Number of threads is 4.
 	pthread_t threads[NUMTHREADS];
-	int threadIds[NUMTHREADS] = {0};
+	int threadIds[NUMTHREADS] = { 0 };
 
 	// Initialize mutex.
 	pthread_mutex_init(&lock, NULL);
@@ -55,8 +55,8 @@ int main(int argc, char *argv[])
 
 		// Creating threads
 		err = pthread_create(&threads[i], NULL, threadFunc, (void*)&threadIds[i]);
-		
-		if(err)
+
+		if (err)
 		{
 			printf("ERROR creating threads, return code %d\n", err);
 			exit(-1);
