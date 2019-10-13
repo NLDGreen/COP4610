@@ -39,11 +39,10 @@ int main(int argc, char* argv[])
 
 	if (argc != 2)
 	{
-		printf("Invalid number of arguments.\n" +
-			"Usage: ./pthread [number of threads]");
+		printf("Invalid number of arguments.\nUsage: ./pthread [number of threads]");
 		exit(-1);
 	}
-	else if (strspn(argv[1], "0123456789") != strlen(argv[1])
+	else if (strspn(argv[1], "0123456789") != strlen(argv[1]))
 	{
 		printf("There is an invalid character(s) in the argument. Only numbers.");
 		printf("\nUsage: ./pthread [number of threads]");
