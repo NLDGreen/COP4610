@@ -30,10 +30,11 @@ void *SimpleThread(void *arg)
 		pthread_mutex_unlock(&lock);
 		#endif
 	}
-	val = SharedVariable;
 	#ifdef PTHREAD_SYNC
 	pthread_barrier_wait(&barr);
 	#endif
+
+	val = SharedVariable;
 	printf("Thread %d sees final value %d\n", threadId, val);
 }
 
