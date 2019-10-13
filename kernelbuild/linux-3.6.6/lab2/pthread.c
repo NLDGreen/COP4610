@@ -5,8 +5,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#define NUMTHREADS 4 // Number of threads.
-
 int SharedVariable = 0;
 pthread_mutex_t lock;
 pthread_barrier_t barr;
@@ -39,16 +37,31 @@ int main(int argc, char* argv[])
 {
 	int i, err;
 
+	if (argc != 2)
+	{
+		printf("Invalid number of arguments.\n" +
+			"Usage: ./pthread [number of threads]");
+		exit(-1);
+	}
+	else if (strspn(argv[1], "0123456789") != strlen(argv[1])
+	{
+		printf("There is an invalid character(s) in the argument. Only numbers.");
+		printf("\nUsage: ./pthread [number of threads]");
+		exit(-1);
+	}
+
+	int numThreads = atoi(argv[1]);
+
 	// Number of threads is 4.
-	pthread_t threads[NUMTHREADS];
-	int threadIds[NUMTHREADS] = { 0 };
+	pthread_t threads[numThreads];
+	int threadIds[numThreads] = { 0 };
 
 	// Initialize mutex.
 	pthread_mutex_init(&lock, NULL);
 	// Initialize barrier.
-	pthread_barrier_init(&barr, NULL, NUMTHREADS);
+	pthread_barrier_init(&barr, NULL, numThreads);
 
-	for (i = 0; i < NUMTHREADS; i++)
+	for (i = 0; i < numThreads; i++)
 	{
 		// Giving thread ids.
 		threadIds[i] = i;
@@ -64,7 +77,7 @@ int main(int argc, char* argv[])
 	}
 
 	// Waiting for threads to finish.
-	for (i = 0; i < NUMTHREADS; i++)
+	for (i = 0; i < numThreads; i++)
 	{
 		pthread_join(threads[i], NULL);
 	}
