@@ -11,7 +11,7 @@ int SharedVariable = 0;
 pthread_mutex_t lock;
 pthread_barrier_t barr;
 
-void *threadFunc(void *arg)
+void *SimpleThread(void *arg)
 {
 	int threadId = *((int*)arg);
 	int num, val;
@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 		threadIds[i] = i;
 
 		// Creating threads
-		err = pthread_create(&threads[i], NULL, threadFunc, (void*)&threadIds[i]);
+		err = pthread_create(&threads[i], NULL, SimpleThread, (void*)&threadIds[i]);
 
 		if (err)
 		{
