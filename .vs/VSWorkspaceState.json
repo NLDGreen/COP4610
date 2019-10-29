@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\kernelbuild",
+    "\\kernelbuild\\linux-3.6.6",
+    "\\kernelbuild\\linux-3.6.6\\lab2"
   ],
+  "SelectedNode": "\\kernelbuild\\linux-3.6.6\\lab2\\pthread.c",
   "PreviewInSolutionExplorer": false
 }
