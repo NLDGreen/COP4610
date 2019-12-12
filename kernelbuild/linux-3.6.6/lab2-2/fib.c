@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include<pthread.h>
+#include <pthread.h>
 #include <stdlib.h>
 
 //Dynamic array to hold value of each fibonacci term.
