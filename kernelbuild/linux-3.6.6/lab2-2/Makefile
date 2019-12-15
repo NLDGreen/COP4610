@@ -1,4 +1,4 @@
 build: fib.c
-	gcc -o fib.c fib
+	gcc -pthread fib.c -o fib
 clean:
 	rm -f fib core
